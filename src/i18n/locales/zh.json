@@ -1132,7 +1132,7 @@
         "deepseeking": "深度解读中...",
         "deepseekResult": "查看AI解读",
         "divinationResult": "占卜结果",
-        "emptyInterpretationPlaceholder": "需要连接DAO获取解读",
+        "emptyInterpretationPlaceholder": "需占卜者连接DAO获取解读",
         "enlightenmentText": "以开放的心态反思此解释。易经以隐喻表达，可能揭示关于情况更深层次的启迪。返回此阅读时需要指引。",
         "finishDivinationFirst": "请先完成占卜",
         "finishConsentFirst": "请先签署占卜同意书",

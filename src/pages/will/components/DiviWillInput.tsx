@@ -74,7 +74,7 @@ export const DiviWillInput = ({ onSubmit, readonly }: DiviWillInputProps) => {
                         className="duration-125 group flex flex-col gap-2 rounded-xl border border-border bg-card-secondary p-2 transition-colors ease-in-out focus-within:bg-card-hover w-full"
                     >
                         <textarea
-                            className="flex w-full rounded-md px-2 py-2 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none text-[16px] leading-snug placeholder-shown:text-ellipsis placeholder-shown:whitespace-nowrap md:text-base focus-visible:ring-0 focus-visible:ring-offset-0 max-h-[200px] scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted-secondary bg-transparent focus:bg-transparent"
+                            className="flex w-full rounded-md px-2 py-2 ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 resize-none text-[16px] leading-snug placeholder-shown:text-ellipsis placeholder-shown:whitespace-nowrap md:text-base focus-visible:ring-0 focus-visible:ring-offset-0 max-h-[200px] scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-500 bg-transparent focus:bg-transparent"
                             id="chatinput"
                             value={will}
                             onChange={(e) => setWill(e.target.value)}

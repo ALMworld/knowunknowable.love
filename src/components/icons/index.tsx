@@ -5,6 +5,7 @@ interface IconProps {
   width?: number;
   height?: number;
   fill?: string;
+  off?: boolean;
 }
 
 export const HomeIcon: React.FC<IconProps> = ({ className = "h-6 w-6" }) => (
@@ -77,6 +78,26 @@ export const TwitterXIcon: React.FC<IconProps> = ({ className = "h-6 w-6" }) => 
     <g>
       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
     </g>
+  </svg>
+);
+
+export const CustomMusicIcon: React.FC<IconProps> = ({ className = "h-6 w-6", off = false }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    className={className}
+  >
+    <path d="M9 18V5l12-2v13" />
+    <circle cx="6" cy="18" r="3" />
+    <circle cx="18" cy="16" r="3" />
+    {off && <path d="M4 4 L24 12" />}
   </svg>
 );
 

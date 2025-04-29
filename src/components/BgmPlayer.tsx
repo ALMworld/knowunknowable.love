@@ -6,7 +6,6 @@ import {cn} from '@/lib/utils';
 
 const BgmMusicPlayer = () => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTrack, setCurrentTrack] = useState(0);
     const soundRef = useRef<Howl | null>(null);
     const location = useLocation();
     const hidePlayer = location.pathname.includes('/divi');
@@ -16,10 +15,6 @@ const BgmMusicPlayer = () => {
             name: "Siberiade Theme2",
             url: "/VoyagerGoldenRecords/028.mp3",
         },
-        {
-            name: "Harmony",
-            url: "/sounds/harmony.mp3",
-        }
     ];
 
     useEffect(() => {
@@ -58,46 +53,6 @@ const BgmMusicPlayer = () => {
         }
         setIsPlaying(!isPlaying);
     };
-
-    const changeTrack = async (index: number) => {
-        // if index is the same as the current track, do nothing
-        if (index === currentTrack && isPlaying) return;
-
-        // Fade out current track
-        if (soundRef.current) {
-            if (isPlaying) {
-                soundRef.current.fade(soundRef.current.volume(), 0, 1000);
-            }
-            await new Promise(resolve => setTimeout(resolve, 300));
-            soundRef.current.unload();
-        }
-
-        // Create and play new track
-        soundRef.current = new Howl({
-            src: [tracks[index].url],
-            loop: true,
-            volume: 0
-        });
-
-        setCurrentTrack(index);
-        
-        if (isPlaying || hidePlayer) {
-            soundRef.current.play();
-            soundRef.current.fade(0, 0.5, 1000);
-        }
-    };
-
-    useEffect(() => {
-        const handleRouteChange = async () => {
-            const path = location.pathname;
-             if (path.includes('/divi')) {
-                await changeTrack(1);
-            } else {
-                await changeTrack(0);
-            }
-        };
-        handleRouteChange();
-    }, [location]);
 
     const handleClick = () => {
         togglePlay();

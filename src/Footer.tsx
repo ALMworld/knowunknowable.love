@@ -20,7 +20,7 @@ const Footer = () => {
             <span className="text-xs text-gray-200 flex-shrink-0">
               <span>know</span>
               <span className="mr-1 text-red-300">unknowable</span>
-              <YinYangIcon className="w-2 h-2 inline-block" />
+              <YinYangIcon className="w-2 h-2 inline-block mr-1" />
               <span className="text-red-300">love</span>
             </span>
           </p>

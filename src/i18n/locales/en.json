@@ -1053,7 +1053,7 @@
         "deepseeking": "Deepseeking...",
         "deepseekResult": "View Deepseek Result",
         "divinationResult": "Divination Result",
-        "emptyInterpretationPlaceholder": "You have to connect DAO to get interpretation.",
+        "emptyInterpretationPlaceholder": "The diviner has to connect DAO to get interpretation.",
         "enlightenmentText": "Reflect on this interpretation with an open mind. The I Ching speaks in metaphors that may reveal deeper enlightenment about the situation over time. Return to this reading when you need guidance.",
         "finishDivinationFirst": "Please complete the divination first",
         "finishConsentFirst": "Please complete the consent first",

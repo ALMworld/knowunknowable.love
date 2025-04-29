@@ -1132,7 +1132,7 @@
         "deepseeking": "深層解釈中...",
         "deepseekResult": "AI解釈を閲覧",
         "divinationResult": "占い結果",
-        "emptyInterpretationPlaceholder": "DAOに接続して解釈を取得する必要があります",
+        "emptyInterpretationPlaceholder": "占い師は解釈を得るためにDAOを接続する必要があります。",
         "enlightenmentText": "この解釈をオープンな心で振り返ってください。易経は隠喩で表現され、状況についてのより深い啓示を示す可能性があります。この読みに戻るときに指針が必要です。",
         "finishDivinationFirst": "まず占いを完了してください",
         "finishConsentFirst": "まず同意書を完了してください",

@@ -1,11 +1,12 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import {AlertCircle, ExternalLink, Info, PictureInPicture, X} from 'lucide-react';
-import {cn} from '@/lib/utils';
-import {usePageCommonData} from '@/i18n/DataProvider';
-import {Image} from '@/i18n/data_types';
-import {CustomAudioRef, CustomPlayerUI} from "@/components/CustomPlayerUI";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AlertCircle, ExternalLink, Info, PictureInPicture, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { usePageCommonData } from '@/i18n/DataProvider';
+import { Image } from '@/i18n/data_types';
+import { CustomAudioRef, CustomPlayerUI } from "@/components/CustomPlayerUI";
+import { Howl } from 'howler';
 
-import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious,} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel";
 
 const VoyagerGoldenRecordsPlayer: React.FC = () => {
     const [playerState, setPlayerState] = useState<'collapsed' | 'expanded'>('collapsed');
@@ -22,9 +23,13 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
     const [volume, setVolume] = useState(0.7);
     const [isMuted, setIsMuted] = useState(false);
 
+    // State and Ref for Harmony Background Music
+    const [harmonyVolume, setHarmonyVolume] = useState(0.08); // Manage harmony volume here
+    const harmonySoundRef = useRef<Howl | null>(null);
+
     const audioPlayerUIRef = useRef<CustomAudioRef>(null);
 
-    const playTrack = useCallback((index: number) => {
+    const playTrack = useCallback((index: number, prepareOnly: boolean = false) => {
         const track = tracks[index];
         if (!audioRef.current || !track || !track.low_copyright_risk) {
             console.error(`Cannot play track index ${index}: Invalid or No Audio Ref or Copyrighted`);
@@ -37,21 +42,23 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
         const audioSrc = `/VoyagerGoldenRecords/${paddedTrackNumber}.mp3`;
 
         if (audioRef.current.src !== audioSrc) {
-             console.log(`playTrack: Setting src to ${audioSrc}`);
-             audioRef.current.src = audioSrc;
-             audioRef.current.load();
+            console.log(`playTrack: Setting src to ${audioSrc}`);
+            audioRef.current.src = audioSrc;
+            audioRef.current.load();
+        }
+
+        if (prepareOnly) {
+            return;
         }
 
         const playPromise = audioRef.current.play();
         if (playPromise !== undefined) {
             playPromise.then(() => {
-                 console.log(`playTrack: Play command succeeded for ${audioSrc}`);
+                console.log(`playTrack: Play command succeeded for ${audioSrc}`);
             }).catch(error => {
-                 console.error(`playTrack: Error playing ${audioSrc}:`, error);
-                 setIsPlaying(false);
+                console.error(`playTrack: Error playing ${audioSrc}:`, error);
+                setIsPlaying(false);
             });
-        } else {
-             console.log(`playTrack: play() did not return a promise.`);
         }
     }, [tracks]);
 
@@ -79,10 +86,9 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
         }
         const firstPlayableIndex = tracks.findIndex(t => t?.low_copyright_risk);
         if (firstPlayableIndex !== -1 && currentTrackIndex === null) {
-             console.log("Autoplaying initial track:", firstPlayableIndex);
-             setTimeout(() => {
-                playTrack(firstPlayableIndex);
-             }, 1200);
+            setTimeout(() => {
+                playTrack(firstPlayableIndex, true);
+            }, 1200);
         }
 
         // Return a cleanup function
@@ -96,6 +102,31 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
 
     }, []); // Keep empty dependency array for mount/unmount effect
 
+    // Effect for initializing and managing Harmony Background Music
+    useEffect(() => {
+        console.log("Initializing Harmony sound");
+        harmonySoundRef.current = new Howl({
+            src: ['/sounds/harmony.mp3'],
+            loop: true,
+            volume: harmonyVolume, // Start with state volume
+            autoplay: harmonyVolume > 0, // Only autoplay if volume is initially > 0
+            onloaderror: (id, error) => {
+                console.error('Error loading harmony audio:', error);
+            }
+        });
+
+        // Cleanup on unmount
+        return () => {
+            console.log("VoyagerGoldenRecordsPlayer unmounting: Unloading harmony sound.");
+            if (harmonySoundRef.current) {
+                harmonySoundRef.current.unload();
+                harmonySoundRef.current = null;
+            }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); // Run only once on mount
+
+    // Effect for handling main audio events (keep as is)
     useEffect(() => {
         const audio = audioRef.current;
         if (!audio) return;
@@ -103,25 +134,25 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
         const handlePlay = () => setIsPlaying(true);
         const handlePause = () => setIsPlaying(false);
         const handleTimeUpdate = () => {
-             if (!isSeeking) {
-                 setCurrentTime(audio.currentTime);
-             }
+            if (!isSeeking) {
+                setCurrentTime(audio.currentTime);
+            }
         };
         const handleDurationChange = () => setDuration(audio.duration || 0);
         const handleVolumeChange = () => {
-             setVolume(audio.volume);
-             setIsMuted(audio.muted);
+            setVolume(audio.volume);
+            setIsMuted(audio.muted);
         };
         const handleEnded = () => {
-             console.log("Audio ended, calling playNextTrack");
-             playNextTrack();
+            console.log("Audio ended, calling playNextTrack");
+            playNextTrack();
         };
         const handleLoadedMetadata = () => {
             console.log("Metadata loaded, duration:", audio.duration);
             setDuration(audio.duration || 0);
         };
         const handleCanPlay = () => {
-             console.log("Audio can play");
+            console.log("Audio can play");
         };
 
         audio.addEventListener('play', handlePlay);
@@ -138,12 +169,36 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
             audio.removeEventListener('pause', handlePause);
             audio.removeEventListener('timeupdate', handleTimeUpdate);
             audio.removeEventListener('durationchange', handleDurationChange);
-             audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+            audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
             audio.removeEventListener('volumechange', handleVolumeChange);
             audio.removeEventListener('ended', handleEnded);
             audio.removeEventListener('canplay', handleCanPlay);
         };
     }, [isSeeking]);
+
+    // Effect to update Howler volume when state changes (outside of initial load)
+    useEffect(() => {
+        if (harmonySoundRef.current && harmonySoundRef.current.volume() !== harmonyVolume) {
+            console.log(`Setting harmony Howl volume to: ${harmonyVolume}`);
+            harmonySoundRef.current.volume(harmonyVolume);
+
+            // Handle play/pause based on volume, including fade
+            if (harmonyVolume > 0 && !harmonySoundRef.current.playing()) {
+                console.log("Harmony volume > 0, ensuring play...");
+                harmonySoundRef.current.play();
+                harmonySoundRef.current.fade(0, harmonyVolume, 300); // Fade in
+            } else if (harmonyVolume === 0 && harmonySoundRef.current.playing()) {
+                console.log("Harmony volume is 0, fading out and pausing...");
+                harmonySoundRef.current.fade(harmonySoundRef.current.volume(), 0, 300);
+                setTimeout(() => {
+                    // Check again in case volume changed back quickly
+                    if (harmonySoundRef.current && harmonySoundRef.current.volume() === 0) {
+                        harmonySoundRef.current.pause();
+                    }
+                }, 300);
+            }
+        }
+    }, [harmonyVolume]);
 
     const playNextTrack = useCallback(() => {
         console.log("playNextTrack called");
@@ -175,7 +230,7 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
     const pauseAudio = useCallback(() => {
         if (audioRef.current) {
             audioRef.current.pause();
-             console.log("pauseAudio called");
+            console.log("pauseAudio called");
         }
     }, []);
 
@@ -184,29 +239,29 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
             pauseAudio();
         } else {
             if (currentTrackIndex === null) {
-                 const firstPlayableIndex = tracks.findIndex(t => t?.low_copyright_risk);
-                 if (firstPlayableIndex !== -1) {
-                     playTrack(firstPlayableIndex);
-                 } else {
-                     console.log("togglePlay: No playable track to start.");
-                 }
+                const firstPlayableIndex = tracks.findIndex(t => t?.low_copyright_risk);
+                if (firstPlayableIndex !== -1) {
+                    playTrack(firstPlayableIndex);
+                } else {
+                    console.log("togglePlay: No playable track to start.");
+                }
             } else {
-                 if (audioRef.current) {
-                     const playPromise = audioRef.current.play();
-                     if (playPromise !== undefined) {
-                         playPromise.catch(error => {
-                             console.error(`togglePlay: Error resuming play:`, error);
-                             setIsPlaying(false);
-                         });
-                     }
-                 }
+                if (audioRef.current) {
+                    const playPromise = audioRef.current.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.error(`togglePlay: Error resuming play:`, error);
+                            setIsPlaying(false);
+                        });
+                    }
+                }
             }
         }
     }, [isPlaying, currentTrackIndex, tracks, playTrack, pauseAudio]);
 
     const handleTimeChange = useCallback((time: number) => {
         if (audioRef.current) {
-             console.log(`handleTimeChange: Setting time to ${time}`);
+            console.log(`handleTimeChange: Setting time to ${time}`);
             setIsSeeking(true);
             audioRef.current.currentTime = time;
             setCurrentTime(time);
@@ -219,7 +274,7 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
             // Always set the volume property to the desired level
             audioRef.current.volume = newVolume;
             // The muted state is handled separately by onToggleMute
-            setVolume(newVolume); 
+            setVolume(newVolume);
         }
     };
 
@@ -230,6 +285,13 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
             setIsMuted(newMuteState);
         }
     }, []);
+
+    // Handler for Harmony Background Music Volume Change
+    const handleHarmonyVolumeChange = (newVol: number) => {
+        console.log(`handleHarmonyVolumeChange called with: ${newVol}`);
+        // Update the state, which will trigger the useEffect to update the Howl instance
+        setHarmonyVolume(newVol);
+    };
 
     const trackList = useMemo(() => (
         <div className="overflow-y-auto scrollbar-none no-scrollbar" style={{ maxHeight: '180px' }}>
@@ -242,7 +304,7 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
                             currentTrackIndex === index ? "text-yellow-500/70" : "text-white/70",
                             isDisabled && "text-gray-400/70"
                         )}>{track.track_number.toString().padStart(2, '0')}</div>
-                        <div className="flex-1 min-w-0"> 
+                        <div className="flex-1 min-w-0">
                             <div className={cn(
                                 "text-sm truncate",
                                 currentTrackIndex === index ? "text-yellow-500" : "text-white",
@@ -282,8 +344,8 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
                                 <div className="text-xs text-gray-300 mb-1 flex items-center gap-1">
                                     <Info size={14} /> Protected by copyright
                                 </div>
-                                <a href="https://goldenrecord.org/#discus-aureus" target="_blank" rel="noopener noreferrer" 
-                                   className="text-xs text-yellow-500 flex items-center gap-1 hover:underline pointer-events-auto">
+                                <a href="https://goldenrecord.org/#discus-aureus" target="_blank" rel="noopener noreferrer"
+                                    className="text-xs text-yellow-500 flex items-center gap-1 hover:underline pointer-events-auto">
                                     View on goldenrecord.org
                                     <ExternalLink size={12} />
                                 </a>
@@ -304,10 +366,12 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
                 duration={duration}
                 volume={volume}
                 isMuted={isMuted}
+                bgVolume={harmonyVolume} // Pass harmony state down
                 onPlayPause={togglePlay}
                 onTimeChange={handleTimeChange}
                 onVolumeChange={handleVolumeChange}
                 onToggleMute={handleToggleMute}
+                onBgVolumeChange={handleHarmonyVolumeChange} // Pass handler down
                 className="voyager-audio-player"
             />
         </div>
