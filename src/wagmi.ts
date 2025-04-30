@@ -12,7 +12,7 @@ const ANVIL_URL = 'http://127.0.0.1:8545';
 const SCROLL_URL = "https://scroll-mainnet.g.alchemy.com/v2/won93Ou1nTcFLb8kzr1Fd15vdvPoczLu";
 
 const projectId = 'a159d003adf3197c439c82598a53231b';
-const appName = 'KnowUnknownable.Love';
+const appName = 'knowunknownable.love';
 const isDev = process.env.NODE_ENV === 'development';
 const deployChain = isDev ? foundry : scroll;
 
@@ -55,8 +55,8 @@ export const config = createConfig({
     ...connectors,
   ],
   chains: [deployChain],
-  pollingInterval: 8000,
-  cacheTime: 8000,
+  pollingInterval: 16000,
+  cacheTime: 32000,
   ssr: false,
   transports: {
     [scroll.id]: fallback([http(SCROLL_URL), http()]),
