@@ -381,7 +381,7 @@ const VoyagerGoldenRecordsPlayer: React.FC = () => {
         return (
             <>
                 <div
-                    className="fixed bottom-14 right-8 z-50 w-16 h-16 rounded-full bg-[#d20033] text-white 
+                    className="fixed bottom-14 right-8 z-50 w-16 h-16 rounded-full bg-black/80 text-white 
                             flex items-center justify-center shadow-lg cursor-pointer overflow-hidden
                             transition-all duration-300 ease-in-out transform scale-100 hover:scale-110"
                     onClick={() => setPlayerState('expanded')}

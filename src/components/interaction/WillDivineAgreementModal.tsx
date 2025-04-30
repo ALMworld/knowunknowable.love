@@ -55,12 +55,7 @@ export const WillDivineAgreementModal = ({ isOpen, onClose }: AgreementModalProp
                                 {/* You understand that the I Ching offers no direct answers, only glimpses—like a zero-knowledge proof—gently guiding us toward the Divine Will.  */}
                                 {commonPageData.modals.consentPoints[1]}
                             </p>
-                            <p className="text-xs text-white/60 mt-1.5 pt-1.5 border-t border-white/10">
-                                <Info className="h-3.5 w-3.5 mr-1 inline shrink-0 text-red-500" />
-                                {/* This site is a proof of concept for 'DUKI in action'. It offers no guarantees about service availability, and most of your divination data is also recorded on the ZK-Chain Scroll once connected to the DAO.
-                                We make no claims about the truth or falsity of I Ching divination, as we indeed know nothing. The Unknowable remains beyond reach—there is always more unknown beyond any known unknown. We can only seek it humbly, with love. */}
-                                {commonPageData.modals.consentPoints[2]}
-                            </p>
+
                         </div>
                     </div>
 
@@ -72,6 +67,13 @@ export const WillDivineAgreementModal = ({ isOpen, onClose }: AgreementModalProp
                         <div className="text-sm text-white/80 break-words whitespace-pre-wrap bg-[#151923] p-2 rounded font-mono text-xs">
                             {divinationText}
                         </div>
+
+                        <p className="text-xs text-white/60 mt-1.5 pt-1.5">
+                            <Info className="h-3.5 w-3.5 mr-1 inline shrink-0 text-red-500" />
+                            {/* This site is a proof of concept for 'DUKI in action'. It offers no guarantees about service availability, and most of your divination data is also recorded on the ZK-Chain Scroll once connected to the DAO.
+                                We make no claims about the truth or falsity of I Ching divination, as we indeed know nothing. The Unknowable remains beyond reach—there is always more unknown beyond any known unknown. We can only seek it humbly, with love. */}
+                            {commonPageData.modals.consentPoints[2]}
+                        </p>
                     </div>
 
                     <div className="p-2 rounded-md bg-[#1F2432]/50">
@@ -79,6 +81,7 @@ export const WillDivineAgreementModal = ({ isOpen, onClose }: AgreementModalProp
                             {/* Agreement Signature */}
                             {commonPageData.modals.agreementSignatureLabel}
                         </label>
+
                         <div className="mt-1.5 flex items-center justify-between">
                             {signature ? (
                                 <div className="text-xs text-green-400/80 bg-[#151923] p-1.5 rounded font-mono break-all whitespace-pre-wrap flex-grow mr-3">

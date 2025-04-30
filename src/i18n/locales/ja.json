@@ -1939,8 +1939,8 @@
         "startDivideTip": "占いの旅を始める準備",
         "step1": {
           "description": "宇宙の意志を占う",
-          "divinationConsentLabel": "占可能であることを証明するために署名",
-          "divinationConsentProof": "占可能証明を閲覧",
+          "divinationConsentLabel": "同意書に署名する",
+          "divinationConsentProof": "同意書を確認する",
           "title": "意念覚醒"
         },
         "step2": {

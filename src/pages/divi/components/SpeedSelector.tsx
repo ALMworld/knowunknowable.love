@@ -75,7 +75,7 @@ export const SpeedSelector: React.FC<SpeedSelectorProps> = ({
                                 </div>
                             </div>
                             <span className={cn(
-                                "text-[10px] font-medium whitespace-nowrap pl-1",
+                                "text-[9px] font-medium whitespace-nowrap pl-1",
                                 "text-white/60 hover:text-white/90",
                                 speedMode === mode && "text-white font-semibold"
                             )}>

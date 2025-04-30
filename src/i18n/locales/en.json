@@ -1853,8 +1853,8 @@
         "beforeDividePhaseText": "Primordial Chaos (Taiji Undivided)",
         "createDivinationError": "Error saving divination. Please try again.",
         "dividePhasesTextArray": [
-          "Divide To Know",
-          "Generation of Yin-Yang",
+          "Divide To Know The Manifestation",
+          "Generation of Yin-Yang By Division",
           "Differentiation of Two Forms [Heaven-Earth]",
           "Suspend One to Manifest Triadic Cosmology",
           "Grouping by Four to Correspond with the Seasons",
@@ -1872,7 +1872,7 @@
         },
         "step2": {
           "description": "Divine the will into possible manifestations",
-          "diviSpeed": "Divi Speed",
+          "diviSpeed": "Speed",
           "diviSpeedOptions": {
             "fast": "Fast",
             "normal": "Normal",
