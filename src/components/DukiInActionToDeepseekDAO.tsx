@@ -135,8 +135,8 @@ export const DukiInActionToDeepseekDAO: React.FC<DukiInActionToDeepseekDaoProps>
         
         // Define the domain
         const domain = {
-            name: "USDC", // Use actual token name from contract if available
-            version: "1",
+            name: dukiDaoContractConfig[chainId].StableCoinName,
+            version: dukiDaoContractConfig[chainId].StableCoinVersion,
             chainId: targetChainId,
             verifyingContract: dukiDaoContractConfig[chainId].stableCoin
         };
