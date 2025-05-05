@@ -75,7 +75,6 @@ interface UIState {
     divideReady: boolean;
     elevated: boolean;
     speedMode: SpeedMode;
-    autoReviewInterval: number;
     dividePhase: DividePhase | null;
 
     error: string;
@@ -101,7 +100,6 @@ interface UIActions {
     setRingRotation: (rotation: number) => void;
 
     setDiviFocusKey: (key: string) => void;
-    setAutoReviewInterval: (interval: number) => void;
 
     // Modal actions
     setError: (error: string) => void;
@@ -138,8 +136,6 @@ export const useUIStore = create<UIStore>()(
         guaEvolutionPlaying: true,
         setGuaEvolutionPlaying: (playing: boolean) => set({ guaEvolutionPlaying: playing }),
         focusedGuaBinary: '',
-        autoReviewInterval: 3000,
-        setAutoReviewInterval: (interval: number) => set({ autoReviewInterval: interval }),
         divideReady: false,
         elevated: false,
         dividePhase: null,

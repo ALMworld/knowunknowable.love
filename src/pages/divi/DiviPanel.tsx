@@ -37,9 +37,7 @@ const DiviPanel: React.FC<{ diviPanelData: DiviPanelData }> = ({ diviPanelData }
     const [selectedAmount, setSelectedAmount] = useState<number>(1);
 
     const { setElevated, setDivideReady, speedMode, setSpeedMode,
-        autoReviewInterval, dividePhase,
-        setAutoReviewInterval, setDiviFocusKey } = useUIStore();
-    const [selectedYinCount, setSelectedYinCount] = useState<number>(6);
+        dividePhase,setDiviFocusKey } = useUIStore();
     const panelRef = useRef<HTMLDivElement>(null);
 
     // Handle exit/return navigation
@@ -121,27 +119,27 @@ const DiviPanel: React.FC<{ diviPanelData: DiviPanelData }> = ({ diviPanelData }
         }
     }, [divinationCompleted]);
 
-    const handleTestDivide = () => {
-        if (isDivinationCompleted()) {
-            console.log("Reset", selectedYinCount);
-            reset(true);
-            return;
-        }
-        // console.log("Divide", selectedYinCount);
-        for (let i = 0; i < 17; i++) {
-            const yinCountArray = [2, 3, 4, 6, 7, 8, 9, 10];
-            // random one
-            const yinCount = yinCountArray[Math.floor(Math.random() * yinCountArray.length)] * 3;
-            divide(yinCount);
-        }
-    };
+    // const handleTestDivide = () => {
+    //     if (isDivinationCompleted()) {
+    //         console.log("Reset", selectedYinCount);
+    //         reset(true);
+    //         return;
+    //     }
+    //     // console.log("Divide", selectedYinCount);
+    //     for (let i = 0; i < 17; i++) {
+    //         const yinCountArray = [2, 3, 4, 6, 7, 8, 9, 10];
+    //         // random one
+    //         const yinCount = yinCountArray[Math.floor(Math.random() * yinCountArray.length)] * 3;
+    //         divide(yinCount);
+    //     }
+    // };
 
     const { openModal } = useUIStore();
 
     // Determine step completion status
     const isStep1Completed = willSignature !== '';
     const isStep2Completed = isStep1Completed && isDivinationCompleted();
-    const isStep3Completed = isStep2Completed && entry?.interpretation !== '';
+    const isStep3Completed = createDivinationSuccess && isStep2Completed && entry?.interpretation !== '';
     console.log(isStep1Completed, isStep2Completed, isStep3Completed);
 
     return (

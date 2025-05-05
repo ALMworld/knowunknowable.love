@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "./GenericContractsDeclaration";
 const deployedContracts = {
   31337: {
     AnyrandMock: {
-      address: "0x12975173b87f7595ee45dffb2ab812ece596bf84",
+      address: "0xe1da8919f262ee86f9be05059c9280142cf23f48",
       abi: [
         {
           type: "function",
@@ -232,11 +232,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745573384.json",
+      deploymentFile: "run-1746433376.json",
       deploymentScript: "LoveDeploy.s.sol",
     },
     MyERC20Mock: {
-      address: "0xf7cd8fa9b94db2aa972023b379c7f72c65e4de9d",
+      address: "0xe1aa25618fa0c7a1cfdab5d6b456af611873b629",
       abi: [
         {
           type: "constructor",
@@ -885,11 +885,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745573384.json",
+      deploymentFile: "run-1746433376.json",
       deploymentScript: "LoveDeploy.s.sol",
     },
     LoveDaoContract: {
-      address: "0x82c6d3ed4cd33d8ec1e51d0b5cc1d822eaa0c3dc",
+      address: "0x0c8e79f3534b00d9a3d4a856b665bf4ebc22f2ba",
       abi: [
         {
           type: "constructor",
@@ -1371,19 +1371,6 @@ const deployedContracts = {
         {
           type: "function",
           name: "s_dao_evolve_round",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_event_id",
           inputs: [],
           outputs: [
             {
@@ -2126,11 +2113,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745573395.json",
-      deploymentScript: "Upgrade.s.sol",
+      deploymentFile: "run-1746433376.json",
+      deploymentScript: "LoveDeploy.s.sol",
     },
     ERC1967Proxy: {
-      address: "0x196dbcbb54b8ec4958c959d8949ebfe87ac2aaaf",
+      address: "0xed1db453c3156ff3155a97ad217b3087d5dc5f6e",
       abi: [
         {
           type: "constructor",
@@ -2612,19 +2599,6 @@ const deployedContracts = {
         {
           type: "function",
           name: "s_dao_evolve_round",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_event_id",
           inputs: [],
           outputs: [
             {
@@ -3367,7 +3341,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745573384.json",
+      deploymentFile: "run-1746433376.json",
       deploymentScript: "LoveDeploy.s.sol",
       isProxy: true,
       implementationName: "LoveDaoContract",
@@ -3375,7 +3349,7 @@ const deployedContracts = {
   },
   534351: {
     MyERC20Mock: {
-      address: "0x7a63d6262b83994a25524ca68b6a4b89252ce28d",
+      address: "0x1c7f1209bd87fdda542c104758a3645dab2aff1d",
       abi: [
         {
           type: "constructor",
@@ -4024,11 +3998,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745478617.json",
-      deploymentScript: "DeployUsdtMockContract.s.sol",
+      deploymentFile: "run-1746440171.json",
+      deploymentScript: "DeployStableCoinMockContract.s.sol",
     },
     LoveDaoContract: {
-      address: "0x807c76487bc4b73f96e436e62348bdc2db313a51",
+      address: "0xcca84228234ff9008afe71fb9da9a782d7938bd0",
       abi: [
         {
           type: "constructor",
@@ -4510,19 +4484,6 @@ const deployedContracts = {
         {
           type: "function",
           name: "s_dao_evolve_round",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_event_id",
           inputs: [],
           outputs: [
             {
@@ -5265,11 +5226,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745478784.json",
+      deploymentFile: "run-1746440262.json",
       deploymentScript: "LoveDeploy.s.sol",
     },
     ERC1967Proxy: {
-      address: "0xb164b377fef0b40e6e4dd0685e24fc8403dda9d4",
+      address: "0xe65f19ba3fddc303e7fa72ae49d4621869ca9a7c",
       abi: [
         {
           type: "constructor",
@@ -5751,19 +5712,6 @@ const deployedContracts = {
         {
           type: "function",
           name: "s_dao_evolve_round",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_event_id",
           inputs: [],
           outputs: [
             {
@@ -6506,7 +6454,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745478784.json",
+      deploymentFile: "run-1746440262.json",
       deploymentScript: "LoveDeploy.s.sol",
       isProxy: true,
       implementationName: "LoveDaoContract",
@@ -6514,7 +6462,7 @@ const deployedContracts = {
   },
   534352: {
     LoveDaoContract: {
-      address: "0x0c78b02074af6b5c6af0a92d24118c41a1e74814",
+      address: "0x538d4104f45c6c863bd7893ee1f23cbb3c85fd1b",
       abi: [
         {
           type: "constructor",
@@ -6996,19 +6944,6 @@ const deployedContracts = {
         {
           type: "function",
           name: "s_dao_evolve_round",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_event_id",
           inputs: [],
           outputs: [
             {
@@ -7751,11 +7686,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745582852.json",
-      deploymentScript: "Upgrade.s.sol",
+      deploymentFile: "run-1746442668.json",
+      deploymentScript: "LoveDeploy.s.sol",
     },
     ERC1967Proxy: {
-      address: "0x782cedf938d1c648f947fe9fe0ce4a3b5ae7f529",
+      address: "0x9e51ad791fef3f217495eb140d9c9eb88caa55bf",
       abi: [
         {
           type: "constructor",
@@ -8237,19 +8172,6 @@ const deployedContracts = {
         {
           type: "function",
           name: "s_dao_evolve_round",
-          inputs: [],
-          outputs: [
-            {
-              name: "",
-              type: "uint256",
-              internalType: "uint256",
-            },
-          ],
-          stateMutability: "view",
-        },
-        {
-          type: "function",
-          name: "s_event_id",
           inputs: [],
           outputs: [
             {
@@ -8992,7 +8914,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1745409774.json",
+      deploymentFile: "run-1746442668.json",
       deploymentScript: "LoveDeploy.s.sol",
       isProxy: true,
       implementationName: "LoveDaoContract",

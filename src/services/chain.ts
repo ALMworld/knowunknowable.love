@@ -1,13 +1,10 @@
 import {Gua} from "@/stores/Gua";
 import {useInfiniteQuery, useMutation, useQuery, useQueryClient,} from "@tanstack/react-query";
 import {Address} from "viem";
+import { isDev } from "@/wagmi";
 
-
-export const DEFAULT_PAGE_SIZE = process.env.NODE_ENV === 'development' ? 2 : 10;
-// Types for API responses
-// export const URL_API = 'http://localhost:8787';
-export const URL_API = process.env.NODE_ENV === 'development' ? 'http://localhost:8080': "https://knowunknowable.love";
-// const URL_API = 'https://api_unstoppable.beswarm.workers.dev';
+export const DEFAULT_PAGE_SIZE = isDev ? 2 : 10;
+export const URL_API = isDev ? 'http://localhost:8080': "https://knowunknowable.love";
 export const URL_API_NONCE = URL_API + '/open/nonce';
 export const URL_API_LOGIN = URL_API + '/open/login';
 export const URL_API_LOGOUT = URL_API + '/open/logout';

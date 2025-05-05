@@ -312,13 +312,6 @@ export const loveDaoContractAbi = [
   {
     type: 'function',
     inputs: [],
-    name: 's_event_id',
-    outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
-    stateMutability: 'view',
-  },
-  {
-    type: 'function',
-    inputs: [],
     name: 's_lastRandomnessWillCallbackTimestamp',
     outputs: [{ name: '', internalType: 'uint256', type: 'uint256' }],
     stateMutability: 'view',
@@ -1017,15 +1010,6 @@ export const useReadLoveDaoContractSDaoEvolveRound =
   /*#__PURE__*/ createUseReadContract({
     abi: loveDaoContractAbi,
     functionName: 's_dao_evolve_round',
-  })
-
-/**
- * Wraps __{@link useReadContract}__ with `abi` set to __{@link loveDaoContractAbi}__ and `functionName` set to `"s_event_id"`
- */
-export const useReadLoveDaoContractSEventId =
-  /*#__PURE__*/ createUseReadContract({
-    abi: loveDaoContractAbi,
-    functionName: 's_event_id',
   })
 
 /**

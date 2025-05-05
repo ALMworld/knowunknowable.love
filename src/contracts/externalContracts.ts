@@ -1,5 +1,6 @@
 import {foundry} from "viem/chains";
 import deployedContracts from "./deployedContracts";
+import { deployChain } from "@/wagmi";
 
 /**
  * @example
@@ -21,7 +22,7 @@ import deployedContracts from "./deployedContracts";
 const scroll = 534352;
 const scrollSepolia = 534351;
 
-export const defaultChainWhenNotConnected = process.env.NODE_ENV === 'development' ? foundry.id : scroll;
+export const defaultChainWhenNotConnected = deployChain.id;
 
 export const MaxInvestorCount = 64; 
 export const InvestFeeDollarAmount = 369; // 369 USDT,

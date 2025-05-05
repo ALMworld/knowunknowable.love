@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { AlertCircle, DollarSign, ExternalLink, MoveRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { usePageCommonData } from "@/i18n/DataProvider";
@@ -54,9 +54,15 @@ export const DukiInActionToDeepseekDAO: React.FC<DukiInActionToDeepseekDaoProps>
     const { data: usdcBalance } = useReadErc20BalanceOf({
         address: dukiDaoContractConfig[chainId]?.stableCoin,
         args: [address],
-        query: { enabled: !!address && !!chainId }
+        query: { 
+            enabled: !!address && !!chainId && !!divination?.uuid,
+            refetchInterval: 30000,
+            refetchOnWindowFocus: false,
+            refetchOnMount: false
+        }
     });
-    console.log("usdcBalance", usdcBalance, address, chainId, address, dukiDaoContractConfig[chainId]?.stableCoin);
+
+    console.log("usdcBalance", divination?.uuid, usdcBalance, address, chainId, address, dukiDaoContractConfig[chainId]?.stableCoin);
 
     const [newDivination, setNewDivination] = useState<DivinationEntry | null | undefined>(divination);
 
@@ -111,17 +117,11 @@ export const DukiInActionToDeepseekDAO: React.FC<DukiInActionToDeepseekDaoProps>
     // signTypedData hook for permit signature
     const { signTypedDataAsync } = useSignTypedData();
 
-    const { data: allowance, refetch: refetchAllowance } = useReadErc20Allowance({
-        address: dukiDaoContractConfig[chainId]?.stableCoin,
-        args: [address, dukiDaoContractConfig[chainId]?.address],
-        query: { enabled: !!address && !!chainId }
-    });
-
-    const { data: balance } = useReadErc20BalanceOf({
-        address: dukiDaoContractConfig[chainId]?.stableCoin,
-        args: [address],
-        query: { enabled: !!address && !!chainId }
-    });
+    // const { data: allowance, refetch: refetchAllowance } = useReadErc20Allowance({
+    //     address: dukiDaoContractConfig[chainId]?.stableCoin,
+    //     args: [address, dukiDaoContractConfig[chainId]?.address],
+    //     query: { enabled: !!address && !!chainId }
+    // });
 
     // Generate permit signature
     const getPermitSignature = async (amountInStableCoin: bigint) => {
@@ -130,8 +130,8 @@ export const DukiInActionToDeepseekDAO: React.FC<DukiInActionToDeepseekDaoProps>
         }
 
         // EIP-2612 Permit type data
-        // 20 minutes deadline
-        const deadline = Math.floor(Date.now() / 1000) + 20 * 60;
+        // ONE DAY deadline
+        const deadline = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
         
         // Define the domain
         const domain = {
@@ -241,7 +241,7 @@ export const DukiInActionToDeepseekDAO: React.FC<DukiInActionToDeepseekDaoProps>
             dukiDaoContractConfig[chainId]?.StableCoinDecimals
         );
 
-        if (balance && balance < amountInStableCoin) {
+        if (usdcBalance && usdcBalance < amountInStableCoin) {
             toast({ variant: "destructive", title: "USDC balance insufficient", description: "USDC balance is insufficient" });
             return;
         }
