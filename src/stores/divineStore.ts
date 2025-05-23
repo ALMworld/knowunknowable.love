@@ -6,8 +6,7 @@
 import {create} from 'zustand';
 import {immer} from 'zustand/middleware/immer';
 import {Gua} from './Gua';
-import {DiviState, Visibility} from '@/types/divi';
-import {DivinationEntry} from '@/services/api';
+import {DiviState, Visibility, DivinationEntry } from '@/types';
 
 
 interface DivinationState {

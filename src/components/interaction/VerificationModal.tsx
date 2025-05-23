@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { KnownStatus } from "@/pages/will/components/DivinationsTable";
-import { DivinationEntry, useUpdateDivinationStatus } from "@/services/api";
+import { useUpdateDivinationStatus } from "@/services/api";
 import { useToast } from "@/components/ui/use-toast";
 import { useAccount } from 'wagmi';
 import { useWriteLoveDaoContractVowDaoManifestation } from '@/contracts/generated';
@@ -15,6 +15,7 @@ import { config } from '@/wagmi';
 import { defaultChainWhenNotConnected, dukiDaoContractConfig } from '@/contracts/externalContracts';
 import { usePageCommonData } from "@/i18n/DataProvider";
 import { zeroHash } from 'viem';
+import { DivinationEntry } from "@/types";
 
 interface VerificationModalProps {
     isOpen: boolean;

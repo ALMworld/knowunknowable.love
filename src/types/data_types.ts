@@ -107,6 +107,7 @@ export interface Buttons {
     verify:             string;
     view:               string;
     refresh:            string;
+    connectDao:         string;
 }
 
 export interface DiviFields {
@@ -700,6 +701,7 @@ const typeMap: any = {
         { json: "verify", js: "verify", typ: "" },
         { json: "view", js: "view", typ: "" },
         { json: "refresh", js: "refresh", typ: "" },
+        { json: "connectDao", js: "connectDao", typ: "" },
     ], false),
     "DiviFields": o([
         { json: "action", js: "action", typ: "" },

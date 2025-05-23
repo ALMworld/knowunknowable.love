@@ -5,7 +5,7 @@ import HexagramCard from '@/pages/divi/components/HexagramCard.tsx';
 import {useIChing} from '@/i18n/DataProvider';
 import {Gua} from '@/stores/Gua';
 import {YAO} from '@/stores/YAO';
-import {IChing} from '@/i18n/data_types';
+import {IChing} from '@/types/data_types.ts';
 
 interface GuaModalProps {
     isOpen: boolean;

@@ -120,7 +120,7 @@
       /* Prevent icon from shrinking */
     }
 
-    #loader svg {
+    #grok-divine-icon svg {
       margin-top: 20px;
       width: 180px;
       height: 180px;
@@ -173,7 +173,9 @@
     #domain-name {
       font-size: 32px;
       color: #e0e0e0;
-      text-align: center;
+      display: flex; /* Added for flex layout */
+      justify-content: center; /* Added for horizontal centering of flex items */
+      align-items: center; /* Added for vertical centering of flex items */
       width: 100%;
       /* Full width */
       margin-top: 0;
@@ -220,10 +222,10 @@
       </div>
 
       <p id="domain-name">
-        <span>know</span>
-        <span style="margin-right: 3px;">unknowable</span>
+        <span style="color: #fca5a5;">know</span>
+        <span style="padding-right: 3px; ">unknowable</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 16 16"
-          style="width: 12px; height: 12px; display: inline-block; position: relative; top: -0.1em;">
+          style="width: 12px; height: 12px; padding-left: 3px; padding-right: 3px;">
           <path d="M9.167 4.5a1.167 1.167 0 1 1-2.334 0 1.167 1.167 0 0 1 2.334 0" />
           <path
             d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0M1 8a7 7 0 0 1 7-7 3.5 3.5 0 1 1 0 7 3.5 3.5 0 1 0 0 7 7 7 0 0 1-7-7m7 4.667a1.167 1.167 0 1 1 0-2.334 1.167 1.167 0 0 1 0 2.334" />

@@ -1,4 +1,4 @@
-import {PointUserData} from "@/i18n/types";
+import {PointUserData} from "@/types/i_ching_types";
 import * as THREE from 'three';
 
 

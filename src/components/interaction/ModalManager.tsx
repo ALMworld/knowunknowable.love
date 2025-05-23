@@ -1,7 +1,3 @@
-// import { SubscribeModal } from './SubscribeModal';
-// import { InvestModal } from './InvestModal';
-// import { JoinCommunityLotteryModal } from './JoinCommunityLottery';
-
 import {useUIStore} from "@/stores/uiStore";
 import {WillDivineAgreementModal} from "./WillDivineAgreementModal.tsx";
 import {EnlightenmentModal} from "./EnlightenmentModal.tsx";

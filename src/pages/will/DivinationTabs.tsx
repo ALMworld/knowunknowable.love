@@ -13,8 +13,6 @@ import {usePageCommonData, usePageWillData} from "@/i18n/DataProvider";
 
 export const DivinationTabs = () => {
 
-    const { openModal } = useUIStore();
-    const queryClient = useQueryClient();
     const { address, isConnected } = useAccount();
     const { data: userData } = useUserData(address);
     const { openConnectModal } = useConnectModal();

@@ -1,4 +1,4 @@
-import {Reference} from '@/i18n/data_types';
+import {Reference} from '@/types/data_types.ts';
 import React from 'react';
 
 const References: React.FC<{ references: Reference[] }> = ({ references }) => {

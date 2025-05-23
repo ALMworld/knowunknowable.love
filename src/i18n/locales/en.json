@@ -993,7 +993,8 @@
         "submitVerification": "Submit Verification",
         "verify": "Verify",
         "view": "View",
-        "refresh": "Refresh"
+        "refresh": "Refresh",
+        "connectDao": "Connect DAO"
       },
       "chainBridgeLabel": "Chain Bridge Tool",
       "changingLines": " changing lines",

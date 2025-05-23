@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from './ZeroKnowledgeDemo.module.css';
-import {ZkDemo} from '@/i18n/data_types';
+import {ZkDemo} from '@/types/data_types.ts';
 
 interface Point {
     [key: string]: [number, number];

@@ -8,7 +8,7 @@ import {
 import {ChevronUp, CircleChevronRight, Globe, Lock} from "lucide-react";
 import "./DiviWillInput.css";
 import {usePageCommonData, usePageWillData} from "@/i18n/DataProvider.tsx";
-import {Suggestion, WillPageData} from "@/i18n/data_types.ts";
+import {Suggestion, WillPageData} from "@/types/data_types.ts";
 import {useUIStore} from "@/stores/uiStore.ts";
 import {useNavigate} from "react-router-dom";
 import {useDivinationStore} from "@/stores/divineStore.ts";

@@ -1,6 +1,6 @@
 import {immerable} from "immer";
 import {YAO} from "./YAO";
-import {binaryIChingMap, commonIChingMap} from "@/i18n/symbols";
+import {binaryIChingMap, commonIChingMap} from "@/utils/iChingUtils";
 
 /**
  * Gua class represents a complete hexagram in I Ching divination.
@@ -244,7 +244,7 @@ export class Gua {
     }
 
     public static binaryToDecimalString(binary: string, paddingSpace: boolean = false): string {
-        let num = commonIChingMap[binary].num;
+        const num = commonIChingMap[binary].num;
         if (num === undefined || num === null) {
             return '';
         }
@@ -481,7 +481,7 @@ export class Gua {
      */
     public static createFromOpsString(opsValue: string): Gua {
         try {
-            let hexValue: string = opsValue.toLowerCase().replace('0x', '');
+            const hexValue: string = opsValue.toLowerCase().replace('0x', '');
             if (!/^[0-9a-f]+$/.test(hexValue)) {
                 throw new Error('Invalid hex string');
             }

@@ -1066,7 +1066,8 @@
         "submit": "提出",
         "submitVerification": "検証を提出",
         "verify": "自己判断",
-        "view": "閲覧"
+        "view": "閲覧",
+        "connectDao": "問道"
       },
       "chainBridgeLabel": "資産クロスチェーンツール",
       "changingLines": "個の変爻",

@@ -4,11 +4,10 @@ import {Button} from "@/components/ui/button";
 import {CheckCircle2, ExternalLink, Eye, Loader2} from "lucide-react";
 import {ScrollIcon} from "@/components/icons";
 import {useUIStore} from "@/stores/uiStore";
-import {ModalType} from "@/types/common";
+import {DivinationEntry, ModalType} from "@/types/common";
 import {getTxLink} from "@/utils/commonUtils";
 import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip";
-import {DivinationEntry} from "@/services/api";
-import {CommonData} from "@/i18n/data_types";
+import {CommonData} from "@/types/data_types.ts";
 
 export enum KnownStatus {
     Unknown = 0,
@@ -20,7 +19,7 @@ export enum KnownStatus {
 export interface DivinationsTableColumn {
     key: string;
     header: string;
-    cell: (divination: any, commonData?: CommonData) => React.ReactNode;
+    cell: (divination: DivinationEntry, commonData?: CommonData) => React.ReactNode;
     className?: string;
 }
 
@@ -28,7 +27,7 @@ export interface DivinationsTableProps {
     isLoading: boolean;
     isError: boolean;
     error?: any;
-    data: any[];
+    data: DivinationEntry[];
     columns: DivinationsTableColumn[];
     emptyMessage?: string;
     loadingMessage?: string;
@@ -159,7 +158,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
     const willColumn = {
         key: "will",
         header: commonData?.diviFields?.diviWill || "Will",
-        cell: (divination: any) => {
+        cell: (divination: DivinationEntry) => {
             return (
                 <TooltipProvider>
                     <Tooltip>
@@ -180,7 +179,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
     const timeColumn = {
         key: "time",
         header: commonData?.diviFields?.diviTime || "Time",
-        cell: (divination: any) => (
+        cell: (divination: DivinationEntry) => (
             <span className="text-white/70">{new Date(divination.created_at).toLocaleDateString()}</span>
         ),
     };
@@ -188,7 +187,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
     const guaColumn = {
         key: "gua",
         header: commonData?.diviFields?.diviGuaProof || "Divination Proof",
-        cell: (divination: any) => (
+        cell: (divination: DivinationEntry) => (
             <div className="text-white/70">
                 <div className="text-xl text-bold">{divination.gua.symbol()}</div>
                 <div className="text-xs whitespace-nowrap"> {divination.gua.getMutationsCount()}{commonData.changingLines}</div>
@@ -200,7 +199,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
         key: "dao_tx",
         header: commonData?.diviFields?.daoTx || "DAO Transaction",
         className: "w-[140px]",
-        cell: (divination: any) => (
+        cell: (divination: DivinationEntry) => (
             <div className="text-white/70 w-full">
                 {divination.dao_tx ? (
                     <a
@@ -223,7 +222,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
                     >
                         <span className="w-full flex items-center justify-around">
                             <span className="text-xs font-medium truncate">
-                                {commonData?.buttons?.connectDao || "Connect DAO"}
+                                {commonData?.buttons.connectDao }
                             </span>
                             <ScrollIcon className="h-3 w-3 flex-shrink-0 ml-2 text-yellow-300" />
                         </span>
@@ -236,7 +235,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
     const statusColumn = {
         key: "status",
         header: commonData?.diviFields?.knowDaoStatus || "Proof Verification",
-        cell: (divination: any, commonData: any) => (
+        cell: (divination: DivinationEntry, commonData: CommonData) => (
             <span className={`px-2 py-1 rounded-full text-xs ${divination.known_status === KnownStatus.Unknown
                 ? "bg-gray-500/20 text-gray-300"
                 : divination.known_status === KnownStatus.KnownRight
@@ -252,7 +251,7 @@ export const getCommonColumns = (commonData: CommonData, chainId: number, openMo
     const actionColumn = {
         key: "action",
         header: commonData?.diviFields?.action || "Action",
-        cell: (divination: any, commonData: any) => (
+        cell: (divination: DivinationEntry, commonData: CommonData) => (
             <div className="flex flex-col space-y-2 justify-center">
                 <Button
                     variant="outline"

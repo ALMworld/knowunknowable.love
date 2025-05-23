@@ -2,7 +2,7 @@
 import {Menu, X} from 'lucide-react';
 import React, {useState} from 'react';
 import {NavLink as RouterNavLink} from 'react-router-dom';
-import {NavItem} from './i18n/types';
+import {NavItem} from '@/types';
 import {GrokDivineIcon, IChingIcon, YinYangIcon} from './components/icons';
 import {routes} from './utils/constants';
 import {LanguageSwitcher} from '@/components/LanguageSwitcher';

@@ -13,9 +13,6 @@ import { RefreshCcw } from 'lucide-react';
 import { useReadLoveDaoContractBaguaDaoAgg4Me } from '@/contracts/generated';
 
 
-// interface TransactionListProps {
-//     transactions: Transaction[];
-// }
 interface DaoEventListProps {
     events: DaoEvent[];
     emptyEventText?: string;

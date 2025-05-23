@@ -1066,7 +1066,8 @@
         "submit": "제출",
         "submitVerification": "검증 제출",
         "verify": "자체 판단",
-        "view": "보기"
+        "view": "보기",
+        "connectDao": "도 묻기"
       },
       "chainBridgeLabel": "자산 체인 간 이동 도구",
       "changingLines": "개의 변효",

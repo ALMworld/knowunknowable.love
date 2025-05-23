@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Circle, X } from "lucide-react";
 import { a, useSpring } from "@react-spring/web";
-import { IChing } from "@/i18n/data_types.ts";
+import { IChing } from "@/types/data_types.ts";
 import { Gua } from "@/stores/Gua.ts";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { commonIChingMap } from "@/i18n/symbols";
+import { commonIChingMap } from "@/utils/iChingUtils";
 
 interface HexagramCardProps {
     hexagram: IChing;

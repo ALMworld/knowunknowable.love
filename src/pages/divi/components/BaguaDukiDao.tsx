@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import {BaguaSections, DualityDaoLoveSection, Section} from '@/i18n/types.ts';
+import {Section} from '@/types/i_ching_types';
+import {BaguaSections, DualityDaoLoveSection} from '@/utils/iChingUtils'
 import {useIChing} from '@/i18n/DataProvider';
 
 interface BaguaDukiDAOProps {
@@ -24,7 +25,7 @@ const getPointOnCircle = (section: Section, offset: number = 148) => {
   // const baseAngle = (section.number - 1) * 45 - 45;
 
   // Calculate text rotation based on position
-  let textRotation = - (section.arr_index - 1) * 45;
+  const textRotation = - (section.arr_index - 1) * 45;
   const radian = textRotation * Math.PI / 180;
 
   return {

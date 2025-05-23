@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CommonData, DAOPageData, DataTypes, DiviPageData, IChing, IChingPageData, WillPageData } from './data_types';
+import { CommonData, DAOPageData, DataTypes, DiviPageData, IChing, IChingPageData, WillPageData } from '../types/data_types.ts';
 import './i18n'; // Import i18n configuration
 import { GrokDivineIcon } from '@/components/icons';
 

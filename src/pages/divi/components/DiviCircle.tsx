@@ -5,7 +5,7 @@ import {MathUtils} from 'three'
 import {useUIStore} from '@/stores/uiStore.ts';
 import {ParticleCanvasTextureFactory} from '@/components/divination/ParticleCanvasTextureFactory.ts';
 import {createInitialPositions, createRandom2DCirclePositions, findCircleIntersection} from '@/lib/divinationUtils.ts';
-import {PointEvolveType, PointWillType} from '@/i18n/types.ts';
+import {PointEvolveType, PointWillType} from '@/types';
 import {useDivinationStore} from '@/stores/divineStore.ts';
 import {getPalette} from '@/utils/colorPalettes.ts';
 import FancyLine from './FancyLine.tsx';
@@ -16,7 +16,7 @@ import FireRing from '../FireRing.tsx';
 import {Text} from '@react-three/drei';
 import {animated, useSpring} from '@react-spring/three';
 import {SpeedModeConfig} from '@/types/common.ts';
-import {commonIChingBinaryList, commonIChingMap} from '@/i18n/symbols.ts';
+import {commonIChingBinaryList, commonIChingMap} from '@/utils/iChingUtils';
 
 const BaseSpeedConstant = 0.01;
 

@@ -6,6 +6,7 @@ import DivinationsTable, {getCommonColumns} from "@/pages/will/components/Divina
 import {useAccount} from "wagmi";
 import {defaultChainWhenNotConnected} from "@/contracts/externalContracts";
 import {useIsMobile} from "@/hooks/use-mobile";
+import {DivinationEntry} from "@/types";
 
 export const FeaturedDaoDivinations = () => {
     const commonData = usePageCommonData();
@@ -32,7 +33,7 @@ export const FeaturedDaoDivinations = () => {
     const visibilityColumn = {
         key: "visibility",
         header: "Type",
-        cell: (divination: any) => (
+        cell: (divination: DivinationEntry) => (
             <span className="text-white/70">{divination.visibility === 1 ? (commonData?.public || "Public") : (commonData?.private || "Private")}</span>
         ),
     };
@@ -53,7 +54,7 @@ export const FeaturedDaoDivinations = () => {
 
     const modifiedWillColumn = {
         ...willColumn,
-        cell: (divination: any) => (
+        cell: (divination: DivinationEntry) => (
             <span className="text-white">{divination.will.substring(0, 30)}...</span>
         ),
     };

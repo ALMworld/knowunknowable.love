@@ -23,16 +23,16 @@ const connectors = connectorsForWallets(
     {
       groupName: 'Popular',
       wallets: [
+        coinbaseWallet,
         okxWallet,
         binanceWallet,
-        rabbyWallet,
         metaMaskWallet,
       ],
     },
     {
       groupName: 'More',
       wallets: [
-        coinbaseWallet,
+        rabbyWallet,
         phantomWallet,
         trustWallet,
         zerionWallet,

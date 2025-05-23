@@ -1066,7 +1066,8 @@
         "submit": "提交",
         "submitVerification": "提交驗證",
         "verify": "自判",
-        "view": "查看"
+        "view": "查看",
+        "connectDao": "問道"
       },
       "chainBridgeLabel": "資產跨鏈工具",
       "changingLines": "個變爻",

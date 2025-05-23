@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AlertCircle, ExternalLink, Info, PictureInPicture, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { usePageCommonData } from '@/i18n/DataProvider';
-import { Image } from '@/i18n/data_types';
+import { Image } from '@/types/data_types.ts';
 import { CustomAudioRef, CustomPlayerUI } from "@/components/CustomPlayerUI";
 import { Howl } from 'howler';
 

@@ -6,9 +6,9 @@ import {GuaSection, MutationGuaSection} from './components/GuaSection.tsx';
 import {ResultGrid} from './components/ResultGrid.tsx';
 import {useDivinationStore} from '@/stores/divineStore';
 import {useUIStore} from '@/stores/uiStore';
-import {DivinationRequest, useCreateDivination} from '@/services/api';
+import {useCreateDivination} from '@/services/api';
 import DiviButton from '@/pages/divi/components/DiviButton.tsx';
-import {ModalType} from '@/types/common.ts';
+import {DivinationRequest, ModalType} from '@/types/common.ts';
 import {Gua} from '@/stores/Gua.ts';
 import {DiviState} from '@/types/divi';
 import {useNavigate} from 'react-router-dom';
@@ -17,7 +17,7 @@ import {keccak256, stringToHex} from 'viem';
 import {AmountSelect} from '@/components/AmountSelect.tsx';
 import {Loader2} from 'lucide-react';
 import {useTranslation} from 'react-i18next';
-import {DiviPanelData} from '@/i18n/data_types.ts';
+import {DiviPanelData} from '@/types/data_types.ts';
 import {DukiInActionToDeepseekDAO} from '@/components/DukiInActionToDeepseekDAO.tsx';
 
 const DiviPanel: React.FC<{ diviPanelData: DiviPanelData }> = ({ diviPanelData }) => {

@@ -12,32 +12,6 @@ import Planet from "@/pages/divi/components/Planets";
 import PlanetsUpdater from '@/components/galaxy/PlanetsUpdater'
 import Sun from "./components/Sun";
 
-export const sharedMaterials = {
-    standard: new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide }),
-    black: new THREE.MeshBasicMaterial({ color: 0x000000, side: THREE.DoubleSide }),
-    white: new THREE.MeshBasicMaterial({ color: 0xffffff, side: THREE.DoubleSide }),
-    text3d: new THREE.MeshStandardMaterial({
-        color: "#ebbe89",
-        toneMapped: true,
-        emissive: "#ff4400",
-        emissiveIntensity: 0.9,
-        side: THREE.DoubleSide
-    }),
-    ring: new THREE.MeshBasicMaterial({
-        // color: 0xffffff,
-        color: "white",
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.8
-    })
-    //   <meshBasicMaterial color={ring.color}
-    //                             side={THREE.DoubleSide}
-    //                             transparent
-    //                             opacity={0.8}
-    //                         />
-};
-
-
 export enum RingType {
     Text,
     Divi,

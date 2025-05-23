@@ -20,7 +20,8 @@ import { defaultChainWhenNotConnected, dukiDaoContractConfig, MaxInvestorCount }
 import { waitForTransactionReceipt } from 'viem/actions';
 import { config } from '@/wagmi';
 import { BaguaDukiDAO } from '@/pages/divi/components/BaguaDukiDao.tsx';
-import { BaguaSections, getWillColor, Section } from '@/i18n/types';
+import {Section } from '@/types';
+import { BaguaSections, getWillColor } from '@/utils/iChingUtils'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import DukiInActionEvents from './DukiInActionEvents';
 import { ModalType } from '@/types/common';

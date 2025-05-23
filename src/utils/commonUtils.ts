@@ -19,7 +19,7 @@ export function objectIsNotEmpty(obj: any): boolean {
 export function getTxLink(tx: string, chainId: number): string {
     // deployedContracts
     if (!tx) return "";
-    const explorer = deployedContracts[chainId].explorer;
+    const explorer = dukiDaoContractConfig[chainId].explorer;
     return `${explorer}/tx/${tx}`;
 }
 
